@@ -42,7 +42,7 @@ export default {
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
       {
-        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.wav$|\.mp3$/,
         loader: 'file-loader?name=[name].[ext]'  // <-- retain original file name
       }
     ]
