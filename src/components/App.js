@@ -21,7 +21,7 @@ class App extends React.Component {
 
     if (isLoggingOut) {
       // do any kind of cleanup or post-logout redirection here
-      this.props.filterActions.applyRepairsFilters(initialState.filters);
+
     }
   }
 
@@ -46,7 +46,10 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  redirectUrl: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

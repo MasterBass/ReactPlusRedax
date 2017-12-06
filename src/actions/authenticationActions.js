@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatusAction";
-import accountApi from '../api/accountApi';
+import accountApi from '../api/mockAccountApi';
 
 export function authenticateStart() {
   return { type: types.AUTHENTICATE_START };
