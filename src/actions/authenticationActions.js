@@ -28,9 +28,8 @@ export function authenticate(account) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
     return accountApi.login(account).then(res => {
-      if(res.data.success) {
+      if(res) {
         dispatch(authenticateSuccess({
-          role: res.data.role,
           token: 'Basic ' + btoa(`${account.username}:${account.password}`),
           name: account.username
         }));
@@ -48,7 +47,7 @@ export function register(user) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
     return accountApi.register(user).then(res => {
-      if(res.data.success) {
+      if(res) {
         dispatch(registerUserSuccess({
           username: user.username,
           email: user.email

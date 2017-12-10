@@ -36,6 +36,7 @@ class App extends React.Component {
       <div className="container-fluid">
         <Header
           loading={this.props.loading}
+          name={this.props.name}
           isLoggedIn={this.props.isLoggedIn}
           onLogOut={this.logOut} />
         {this.props.children}
@@ -49,14 +50,16 @@ App.propTypes = {
   loading: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   redirectUrl: PropTypes.string.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  name: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.ajaxCallsInProgress > 0,
-    isLoggedIn: PropTypes.bool.isRequired,
-    redirectUrl: PropTypes.string.isRequired,
+    name: state.authentication.name,
+    isLoggedIn: state.authentication.loggedIn,
+    redirectUrl: state.authentication.redirectUrl,
     isManager: PropTypes.bool.isRequired
   };
 }

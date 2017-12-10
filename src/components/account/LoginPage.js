@@ -50,7 +50,7 @@ class LoginPage extends React.Component {
     let account = this.state.account;
     this.props.actions.authenticate(this.state.account)
       .then(() => {
-        if (this.props.role) {
+        if (this.props.token) {
           this.redirect();
         } else {
           account.password = '';
@@ -92,7 +92,7 @@ LoginPage.propTypes = {
   actions: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
   redirectUrl: PropTypes.string,
-  role: PropTypes.string
+  token: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
@@ -100,7 +100,7 @@ function mapStateToProps(state, ownProps) {
   return {
     account: account,
     redirectUrl: state.authentication.redirectUrl,
-    role: state.authentication.role
+    token: state.authentication.token
   };
 }
 

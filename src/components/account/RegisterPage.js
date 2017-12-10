@@ -65,8 +65,8 @@ class RegisterPage extends React.Component {
         this.context.router.push('/login');
       })
       .catch(error => {
-        if(error.response.data) {
-          toastr.error(error.response.data);
+        if(error) {
+          toastr.error(error);
         } else {
           toastr.error(error);
         }
