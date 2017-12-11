@@ -9,11 +9,17 @@ class AuthenticationRequiredContainer extends React.Component {
     super(props, context);
   }
 
-  componentDidMount() {
+  componentWillMount() {
 
     if (!this.props.isLoggedIn) {
       this.props.actions.setRedirectUrl(this.props.currentUrl);
       browserHistory.replace("/login");
+    } else if(this.props.route.role) {
+      const roles = this.props.route.role .split(', ');
+      if(!roles.includes(this.props.role)) {
+        this.props.actions.setRedirectUrl(this.props.currentUrl);
+        browserHistory.replace("/login");
+      }
     }
   }
 
@@ -34,6 +40,8 @@ AuthenticationRequiredContainer.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   children: PropTypes.object.isRequired,
   currentUrl: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  route: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -42,6 +50,7 @@ function mapStateToProps(state, ownProps) {
   return {
     isLoggedIn: state.authentication.loggedIn,
     redirectUrl: state.authentication.redirectUrl,
+    role: state.authentication.role,
     currentUrl: ownProps.location.pathname
   };
 }

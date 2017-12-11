@@ -2,14 +2,15 @@ import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 
-const Header = ({loading, name, isLoggedIn, onLogOut}) => {
+const Header = ({loading, name, isLoggedIn, onLogOut, role}) => {
   return (
     <div>
       <nav>
         <IndexLink to="/" activeClassName="active">Home</IndexLink>
         {" | "}
-        <Link to="/courses" activeClassName="active">Course</Link>
-        {" | "}
+        {role == "admin" && <Link to="/courses" activeClassName="active">Courses</Link>}
+        {role == "user" && <Link to="/courses/all" activeClassName="active">Courses</Link>}
+        {(role == "user" || role == "admin") && " | "}
         <Link to="/about" activeClassName="active">About</Link>
         {loading && <LoadingDots interval={100} dots={20}/>}
       </nav>
@@ -27,6 +28,7 @@ const Header = ({loading, name, isLoggedIn, onLogOut}) => {
 Header.propTypes = {
   loading: PropTypes.bool.isRequired,
   name: PropTypes.string,
+  role: PropTypes.string,
   isLoggedIn: PropTypes.bool.isRequired,
   onLogOut: PropTypes.func.isRequired
 };
