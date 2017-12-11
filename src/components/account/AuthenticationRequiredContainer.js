@@ -9,7 +9,7 @@ class AuthenticationRequiredContainer extends React.Component {
     super(props, context);
   }
 
-  componentDidMount() {
+  componentWillMount() {
 
     if (!this.props.isLoggedIn) {
       this.props.actions.setRedirectUrl(this.props.currentUrl);
