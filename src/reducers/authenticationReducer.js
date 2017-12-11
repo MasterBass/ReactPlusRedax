@@ -10,13 +10,15 @@ export default function authenticationReducer(state = initialState.authenticatio
       return Object.assign({}, state, {
         loggedIn: true,
         token: action.auth.token,
-        name: action.auth.name
+        name: action.auth.name,
+        role: action.auth.role
       });
 
     case types.LOG_OUT:
       return Object.assign({}, state, {
         loggedIn: false,
         token: '',
+        role: '',
         name: ''
       });
 

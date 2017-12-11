@@ -7,12 +7,14 @@ const users = [
   {
     id: 'admin',
     username: 'admin',
-    password: '123456'
+    password: '123456',
+    role: 'admin'
   },
   {
     id: 'user',
     username: 'user',
-    password: '123456'
+    password: '123456',
+    role: 'user'
   }];
 
 //This would be performed on the server in a real app. Just stubbing in.

@@ -6,6 +6,7 @@ import LoginPage from './components/account/LoginPage';
 import RegisterPage from './components/account/RegisterPage';
 import AboutPage from './components/about/AboutPage';
 import CoursesPage from './components/course/CoursesPage';
+import CoursesPreviewPage from './components/course/CoursesPreviewPage';
 import AuthenticationRequired from './components/account/AuthenticationRequiredContainer';
 import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-disable-line import/no-named-as-default
 
@@ -14,10 +15,13 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="login" component={LoginPage}/>
     <Route path="register" component={RegisterPage}/>
-    <Route component={AuthenticationRequired}>
+    <Route component={AuthenticationRequired} role="admin">
       <Route path="courses" component={CoursesPage} />
       <Route path="course" component={ManageCoursePage} />
       <Route path="course/:id" component={ManageCoursePage} />
+    </Route>
+    <Route component={AuthenticationRequired} role="admin, user">
+      <Route path="courses/all" component={CoursesPreviewPage} />
     </Route>
     <Route path="about" component={AboutPage} />
   </Route>

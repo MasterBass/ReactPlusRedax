@@ -31,7 +31,8 @@ export function authenticate(account) {
       if(res) {
         dispatch(authenticateSuccess({
           token: 'Basic ' + btoa(`${account.username}:${account.password}`),
-          name: account.username
+          name: account.username,
+          role: res.role
         }));
       } else {
         dispatch(authenticateError());

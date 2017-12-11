@@ -37,6 +37,7 @@ class App extends React.Component {
         <Header
           loading={this.props.loading}
           name={this.props.name}
+          role={this.props.role}
           isLoggedIn={this.props.isLoggedIn}
           onLogOut={this.logOut} />
         {this.props.children}
@@ -51,13 +52,15 @@ App.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   redirectUrl: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
-  name: PropTypes.string
+  name: PropTypes.string,
+  role: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.ajaxCallsInProgress > 0,
     name: state.authentication.name,
+    role: state.authentication.role,
     isLoggedIn: state.authentication.loggedIn,
     redirectUrl: state.authentication.redirectUrl,
     isManager: PropTypes.bool.isRequired
