@@ -28,3 +28,7 @@ div.log-in-out {
 div.clear {
   clear: both;
 }
+
+div#modal-dialog {
+  display: block;
+}

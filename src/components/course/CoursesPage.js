@@ -4,11 +4,23 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import * as modalActions from '../../actions/modalActions';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
+  }
+
+  deleteCourse(event) {
+    event.preventDefault();
+    this.props.modalActions.showModal({
+      modalType: 'DELETE_COURSE',
+      modalProps: {
+        courseId: event.target.id
+      }
+    });
   }
 
   courseRow(course, index) {
@@ -27,7 +39,7 @@ class CoursesPage extends React.Component {
                value="Add course"
                className="btn btn-primary"
                onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses}/>
+        <CourseList courses={courses} deleteCourse={this.deleteCourse}/>
       </div>
     );
   }
@@ -35,7 +47,8 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  modalActions: PropTypes.object.isRequired
 };
 
 
@@ -47,7 +60,8 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(courseActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
 

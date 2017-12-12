@@ -3,12 +3,14 @@ import courses from './courseReducer';
 import authors from './authorReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import authentication from './authenticationReducer';
+import modal from './modalReducer';
 
 const rootReducer = combineReducers({
   courses,
   authors,
   ajaxCallsInProgress,
-  authentication
+  authentication,
+  modal
 });
 
 export default rootReducer;
