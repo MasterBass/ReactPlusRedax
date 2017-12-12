@@ -1,7 +1,7 @@
 {
-  "name": "sql-backuper",
-  "version": "1.0.0",
-  "description": "Backup system for MS SQL Server",
+  "name": "starter-kit",
+  "version": "1.0.1",
+  "description": "Redux Starter Kit",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel open:src lint:watch test:watch",
@@ -11,7 +11,7 @@
     "test": "mocha --reporter spec tools/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist":  "node_modules/.bin/rimraf ./dist",
+    "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-dist test lint build:html",
     "build": "babel-node tools/build.js",
@@ -25,6 +25,7 @@
     "jquery": "2.2.3",
     "react": "15.0.2",
     "react-dom": "15.0.2",
+    "react-modal": "^3.1.7",
     "react-redux": "4.4.5",
     "react-router": "2.4.0",
     "react-router-redux": "4.0.4",
