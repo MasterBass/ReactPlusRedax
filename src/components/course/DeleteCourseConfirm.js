@@ -10,7 +10,8 @@ export class DeleteCourseConfirm extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      deleting: false
+      deleting: false,
+      modalIsOpen: true
     };
     this.closeModal = this.closeModal.bind(this);
     this.deleteCourse= this.deleteCourse.bind(this);
@@ -39,7 +40,7 @@ export class DeleteCourseConfirm extends React.Component {
       <Modal
         className="Modal__Bootstrap modal-dialog"
         closeTimeoutMS={150}
-        isOpen={this.props.modalIsOpen}
+        isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
         ariaHideApp={false} >
         <div className="modal-content">
@@ -68,15 +69,13 @@ export class DeleteCourseConfirm extends React.Component {
 DeleteCourseConfirm.propTypes = {
   modalActions: PropTypes.object.isRequired,
   courseActions: PropTypes.object.isRequired,
-  courseId: PropTypes.string.isRequired,
-  modalIsOpen: PropTypes.bool
+  courseId: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     courseId: ownProps.courseId,
-    courses: state.courses,
-    modalIsOpen: !(state.modal.modalType === null)
+    courses: state.courses
   };
 }
 
