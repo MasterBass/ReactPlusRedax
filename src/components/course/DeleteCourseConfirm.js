@@ -35,31 +35,31 @@ export class DeleteCourseConfirm extends React.Component {
   }
 
   render() {
-    const customStyles = {
-      content : {
-        top                   : '25%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        width                 : '500px',
-        transform             : 'translate(-50%, -50%)'
-      }
-    };
     return (
       <Modal
+        className="Modal__Bootstrap modal-dialog"
+        closeTimeoutMS={150}
         isOpen={this.props.modalIsOpen}
         onRequestClose={this.closeModal}
-        style={customStyles}
-        ariaHideApp={false}
-        contentLabel="Example Modal">
-
-        <h4>Delete course</h4>
-        <p>{this.props.courseId}</p>
-        <button className="btn btn-danger" onClick={this.deleteCourse}
-                disabled={this.state.deleting}>{this.state.deleting ? 'Deleting....' : 'Delete'}</button>
-        <button className="btn btn-secondary" onClick={this.closeModal}
-                disabled={this.state.deleting}>Cancel</button>
+        ariaHideApp={false} >
+        <div className="modal-content">
+          <div className="modal-header">
+            <button type="button" className="close" onClick={this.closeModal}>
+              <span aria-hidden="true">&times;</span>
+              <span className="sr-only">Close</span>
+            </button>
+            <h4 className="modal-title">Delete course</h4>
+          </div>
+          <div className="modal-body">
+            <p>{this.props.courseId}</p>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-default" onClick={this.closeModal}
+                    disabled={this.state.deleting}>Cancel</button>
+            <button type="button" className="btn btn-danger" onClick={this.deleteCourse}
+                    disabled={this.state.deleting}>{this.state.deleting ? 'Deleting....' : 'Delete'}</button>
+          </div>
+        </div>
       </Modal>
     );
   }
