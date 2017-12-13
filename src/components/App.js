@@ -1,10 +1,11 @@
+/*eslint-disable import/no-named-as-default */
 import React, {PropTypes} from 'react';
 import Header from './common/Header';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import {bindActionCreators} from 'redux';
-import initialState from '../reducers/initialState';
 import * as authActions from '../actions/authenticationActions';
+import ModalRoot from './modal/ModalRoot';
 
 class App extends React.Component {
   constructor(props, context) {
@@ -41,6 +42,7 @@ class App extends React.Component {
           isLoggedIn={this.props.isLoggedIn}
           onLogOut={this.logOut} />
         {this.props.children}
+        <ModalRoot />
       </div>
     );
   }

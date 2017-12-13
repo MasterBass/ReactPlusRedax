@@ -2,5 +2,9 @@ export default {
   authors: [],
   courses: [],
   ajaxCallsInProgress: 0,
-  authentication: { redirectUrl: '', loggedIn: false, role: '', token: '', name: '' }
+  authentication: { redirectUrl: '', loggedIn: false, role: '', token: '', name: '' },
+  modal: {
+    modalType: null,
+    modalProps: {}
+  }
 };
