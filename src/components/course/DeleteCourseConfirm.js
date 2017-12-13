@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import React, {PropTypes} from 'react';
 import toastr from 'toastr';
+import Modal from 'react-modal';
 
 export class DeleteCourseConfirm extends React.Component {
   constructor(props, context) {
@@ -11,11 +12,11 @@ export class DeleteCourseConfirm extends React.Component {
     this.state = {
       deleting: false
     };
-    this.hideModal = this.hideModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.deleteCourse= this.deleteCourse.bind(this);
   }
 
-  hideModal() {
+  closeModal() {
     this.props.modalActions.hideModal();
   }
 
@@ -26,6 +27,7 @@ export class DeleteCourseConfirm extends React.Component {
     }).then(() => {
       this.setState({deleting: false});
       this.props.modalActions.hideModal();
+      toastr.success('course deleted');
     }).catch(error => {
       this.setState({deleting: false});
       toastr.error(error);
@@ -33,30 +35,32 @@ export class DeleteCourseConfirm extends React.Component {
   }
 
   render() {
+    const customStyles = {
+      content : {
+        top                   : '25%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        width                 : '500px',
+        transform             : 'translate(-50%, -50%)'
+      }
+    };
     return (
-      <div>
-        <div className="modal fade in" id="modal-dialog" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" onClick={this.hideModal} className="close" data-dismiss="modal">&times;</button>
-                <h4 className="modal-title"></h4>
-              </div>
-              <div className="modal-body">
-                <p>Would you like to delete course: {this.props.courseId}?</p>
-              </div>
-              <div className="modal-footer">
-                <button type="button" disabled={this.state.deleting}
-                        onClick={this.deleteCourse} className="btn btn-danger" data-dismiss="modal">{this.state.deleting ? 'Deleting....' : 'Delete'}
-                </button>
-                <button type="button" onClick={this.hideModal} className="btn btn-default" data-dismiss="modal">Cancel
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="modal-backdrop fade in"></div>
-      </div>
+      <Modal
+        isOpen={this.props.modalIsOpen}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        ariaHideApp={false}
+        contentLabel="Example Modal">
+
+        <h4>Delete course</h4>
+        <p>{this.props.courseId}</p>
+        <button className="btn btn-danger" onClick={this.deleteCourse}
+                disabled={this.state.deleting}>{this.state.deleting ? 'Deleting....' : 'Delete'}</button>
+        <button className="btn btn-secondary" onClick={this.closeModal}
+                disabled={this.state.deleting}>Cancel</button>
+      </Modal>
     );
   }
 }
@@ -64,13 +68,15 @@ export class DeleteCourseConfirm extends React.Component {
 DeleteCourseConfirm.propTypes = {
   modalActions: PropTypes.object.isRequired,
   courseActions: PropTypes.object.isRequired,
-  courseId: PropTypes.string.isRequired
+  courseId: PropTypes.string.isRequired,
+  modalIsOpen: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     courseId: ownProps.courseId,
-    courses: state.courses
+    courses: state.courses,
+    modalIsOpen: !(state.modal.modalType === null)
   };
 }
 

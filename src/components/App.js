@@ -1,3 +1,4 @@
+/*eslint-disable import/no-named-as-default */
 import React, {PropTypes} from 'react';
 import Header from './common/Header';
 import {connect} from 'react-redux';
@@ -41,7 +42,7 @@ class App extends React.Component {
           isLoggedIn={this.props.isLoggedIn}
           onLogOut={this.logOut} />
         {this.props.children}
-        <ModalRoot/>
+        <ModalRoot />
       </div>
     );
   }
