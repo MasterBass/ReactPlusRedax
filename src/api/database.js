@@ -6,7 +6,10 @@ const config = {
   databaseURL: "https://shengen-52363.firebaseio.com"
 };
 
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+
 const database = firebase.database();
 
 export default database;
