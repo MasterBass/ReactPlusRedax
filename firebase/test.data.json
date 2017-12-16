@@ -38,7 +38,24 @@
       "watchHref": "http://www.pluralsight.com/courses/web-components-shadow-dom",
       "authorId": "cory-house",
       "length": "5:10",
-      "category": "HTML5"    
+      "category": "HTML5"
+    }
+  },
+  "authors" : {
+    "cory-house": {
+      "id": "cory-house",
+      "firstName": "Cory",
+      "lastName": "House"
+    },
+    "scott-allen": {
+      "id": "scott-allen",
+      "firstName": "Scott",
+      "lastName": "Allen"
+    },
+    "dan-wahlin": {
+      "id": "dan-wahlin",
+      "firstName": "Dan",
+      "lastName": "Wahlin"
     }
   }
 }
