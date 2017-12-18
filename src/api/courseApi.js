@@ -1,4 +1,4 @@
-import database from './database';
+import { database } from './database';
 
 class CourseApi {
 
@@ -20,8 +20,6 @@ class CourseApi {
   static deleteCourse(courseId) {
     return database.ref('/courses/' + courseId).remove();
   }
-
-
 
 }
 

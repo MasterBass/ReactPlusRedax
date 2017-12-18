@@ -12,11 +12,11 @@ const LoginForm = ({account, errors, logging, onLogin, onChange}) => {
         <Link to="register">register</Link>
       </p>
       <TextInput
-        name="username"
-        label="User name"
-        value={account.username}
+        name="email"
+        label="Email"
+        value={account.email}
         onChange={onChange}
-        error={errors.username}/>
+        error={errors.email}/>
 
       <PasswordInput
         name="password"

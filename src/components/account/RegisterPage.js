@@ -28,8 +28,8 @@ class RegisterPage extends React.Component {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.user.username.length < 1) {
-      errors.username = 'User name is obligatory';
+    if (this.state.user.displayName.length < 1) {
+      errors.displayName = 'User name is obligatory';
       formIsValid = false;
     }
     if (this.state.user.email.length < 1) {
@@ -97,7 +97,7 @@ RegisterPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  let user = {username: '', email: '', password: '', repeatPassword: ''};
+  let user = {displayName: '', email: '', password: '', repeatPassword: ''};
   return {
     user: user
   };

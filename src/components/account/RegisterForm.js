@@ -7,11 +7,11 @@ const RegisterForm = ({user, errors, registering, onChange, onRegister}) => {
     <form>
       <h1>Registration</h1>
       <TextInput
-        name="username"
+        name="displayName"
         label="User name"
-        value={user.username}
+        value={user.displayName}
         onChange={onChange}
-        error={errors.username}/>
+        error={errors.displayName}/>
 
       <TextInput
         name="email"

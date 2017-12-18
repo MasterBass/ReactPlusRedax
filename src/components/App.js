@@ -28,7 +28,7 @@ class App extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
+    this.props.actions.signOut();
     browserHistory.push('/');
   }
 

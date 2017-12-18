@@ -57,5 +57,9 @@
       "firstName": "Dan",
       "lastName": "Wahlin"
     }
-  }
+  },
+  "admins" : [
+    "admin@shengen.com",
+    "admin@shengen.eu"
+  ]
 }

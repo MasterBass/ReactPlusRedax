@@ -10,6 +10,5 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const database = firebase.database();
-
-export default database;
+export const database = firebase.database();
+export const auth = firebase.auth();

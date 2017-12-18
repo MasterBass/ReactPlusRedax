@@ -28,8 +28,8 @@ class LoginPage extends React.Component {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.account.username.length < 1) {
-      errors.username = 'User name is obligatory';
+    if (this.state.account.email.length < 1) {
+      errors.email = 'User email is obligatory';
       formIsValid = false;
     }
     if (this.state.account.password.length < 6) {
@@ -50,7 +50,7 @@ class LoginPage extends React.Component {
     let account = this.state.account;
     this.props.actions.authenticate(this.state.account)
       .then(() => {
-        if (this.props.token) {
+        if (this.props.isLoggedIn) {
           this.redirect();
         } else {
           account.password = '';
@@ -92,15 +92,15 @@ LoginPage.propTypes = {
   actions: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
   redirectUrl: PropTypes.string,
-  token: PropTypes.string
+  isLoggedIn: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
-  let account = {username: '', password: ''};
+  let account = {email: '', password: ''};
   return {
     account: account,
     redirectUrl: state.authentication.redirectUrl,
-    token: state.authentication.token
+    isLoggedIn: state.authentication.loggedIn
   };
 }
 

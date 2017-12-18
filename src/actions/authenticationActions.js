@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatusAction";
-import accountApi from '../api/mockAccountApi';
+import accountApi from '../api/accountApi';
+import { auth } from '../api/database';
 
 export function authenticateStart() {
   return { type: types.AUTHENTICATE_START };
@@ -24,22 +25,35 @@ export function registerUserError() {
   return {type: types.REGISTER_USER_ERROR };
 }
 
+export function signOut() {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    return accountApi.logOut().then(() => {
+      dispatch(logOut());
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error.message);
+    });
+  };
+}
+
 export function authenticate(account) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
     return accountApi.login(account).then(res => {
       if(res) {
         dispatch(authenticateSuccess({
-          token: 'Basic ' + btoa(`${account.username}:${account.password}`),
-          name: account.username,
-          role: res.role
+          name: res.displayName,
+          role: '',
+          loggedIn: '',
+          token: ''
         }));
       } else {
         dispatch(authenticateError());
       }
     }).catch(error => {
       dispatch(ajaxCallError(error));
-      throw(error);
+      throw(error.message);
     });
   };
 }
@@ -47,7 +61,16 @@ export function authenticate(account) {
 export function register(user) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
+    const displayName = user.displayName;
     return accountApi.register(user).then(res => {
+      if(res) {
+        const user = auth.currentUser;
+        user.updateProfile({
+          displayName: displayName
+        });
+        return res;
+      }
+    }).then(res => {
       if(res) {
         dispatch(registerUserSuccess({
           username: user.username,
@@ -58,7 +81,7 @@ export function register(user) {
       }
     }).catch(error => {
       dispatch(ajaxCallError(error));
-      throw(error);
+      throw(error.message);
     });
   };
 }
