@@ -42,12 +42,12 @@ export function authenticate(account) {
     dispatch(beginAjaxCall());
     return accountApi.login(account).then(res => {
       if(res) {
-        dispatch(authenticateSuccess({
-          name: res.displayName,
-          role: '',
-          loggedIn: '',
-          token: ''
-        }));
+        return accountApi.getRole(res.uid).then(u => {
+          dispatch(authenticateSuccess({
+            name: res.displayName,
+            role: u.val().role
+          }));
+        });
       } else {
         dispatch(authenticateError());
       }

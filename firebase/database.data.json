@@ -1,65 +1,71 @@
 {
+  "authors" : {
+    "cory-house" : {
+      "firstName" : "Cory",
+      "id" : "cory-house",
+      "lastName" : "House"
+    },
+    "dan-wahlin" : {
+      "firstName" : "Dan",
+      "id" : "dan-wahlin",
+      "lastName" : "Wahlin"
+    },
+    "scott-allen" : {
+      "firstName" : "Scott",
+      "id" : "scott-allen",
+      "lastName" : "Allen"
+    }
+  },
   "courses" : {
-    "react-flux-building-applications" : {
-      "id": "react-flux-building-applications",
-      "title": "Building Applications in React and Flux",
-      "watchHref": "http://www.pluralsight.com/courses/react-flux-building-applications",
-      "authorId": "cory-house",
-      "length": "5:08",
-      "category": "JavaScript"
-    },
-    "rclean-code" : {
-      "id": "rclean-code",
-      "title": "Clean Code: Writing Code for Humans",
-      "watchHref": "http://www.pluralsight.com/courses/writing-clean-code-humans",
-      "authorId": "cory-house",
-      "length": "3:10",
-      "category": "Software Practices"
-    },
     "architecture" : {
-      "id": "architecture",
-      "title": "Architecting Applications for the Real World",
-      "watchHref": "http://www.pluralsight.com/courses/architecting-applications-dotnet",
-      "authorId": "cory-house",
-      "length": "2:52",
-      "category": "Software Architecture"
+      "authorId" : "cory-house",
+      "category" : "Software Architecture",
+      "id" : "architecture",
+      "length" : "2:52",
+      "title" : "Architecting Applications for the Real World",
+      "watchHref" : "http://www.pluralsight.com/courses/architecting-applications-dotnet"
     },
     "career-reboot-for-developer-mind" : {
-      "id": "career-reboot-for-developer-mind",
-      "title": "Becoming an Outlier: Reprogramming the Developer Mind",
-      "watchHref": "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
-      "authorId": "cory-house",
-      "length": "2:30",
-      "category": "Career"
+      "authorId" : "cory-house",
+      "category" : "Career",
+      "id" : "career-reboot-for-developer-mind",
+      "length" : "2:30",
+      "title" : "Becoming an Outlier: Reprogramming the Developer Mind",
+      "watchHref" : "http://www.pluralsight.com/courses/career-reboot-for-developer-mind"
+    },
+    "rclean-code" : {
+      "authorId" : "cory-house",
+      "category" : "Software Practices",
+      "id" : "rclean-code",
+      "length" : "3:10",
+      "title" : "Clean Code: Writing Code for Humans",
+      "watchHref" : "http://www.pluralsight.com/courses/writing-clean-code-humans"
+    },
+    "react-flux-building-applications" : {
+      "authorId" : "cory-house",
+      "category" : "JavaScript",
+      "id" : "react-flux-building-applications",
+      "length" : "5:08",
+      "title" : "Building Applications in React and Flux",
+      "watchHref" : "http://www.pluralsight.com/courses/react-flux-building-applications"
     },
     "web-components-shadow-dom" : {
-      "id": "web-components-shadow-dom",
-      "title": "Web Component Fundamentals",
-      "watchHref": "http://www.pluralsight.com/courses/web-components-shadow-dom",
-      "authorId": "cory-house",
-      "length": "5:10",
-      "category": "HTML5"
+      "authorId" : "cory-house",
+      "category" : "HTML5",
+      "id" : "web-components-shadow-dom",
+      "length" : "5:10",
+      "title" : "Web Component Fundamentals",
+      "watchHref" : "http://www.pluralsight.com/courses/web-components-shadow-dom"
     }
   },
-  "authors" : {
-    "cory-house": {
-      "id": "cory-house",
-      "firstName": "Cory",
-      "lastName": "House"
+  "users" : {
+    "Jnbyv4ExAeNO0P1FYjXQQzqF4tw2" : {
+      "email" : "user@msn.com",
+      "role" : "user"
     },
-    "scott-allen": {
-      "id": "scott-allen",
-      "firstName": "Scott",
-      "lastName": "Allen"
-    },
-    "dan-wahlin": {
-      "id": "dan-wahlin",
-      "firstName": "Dan",
-      "lastName": "Wahlin"
+    "ccEJQLeqy1cScieCUHfWZGQsvHz2" : {
+      "email" : "admin@msn.com",
+      "role" : "admin"
     }
-  },
-  "admins" : [
-    "admin@shengen.com",
-    "admin@shengen.eu"
-  ]
+  }
 }

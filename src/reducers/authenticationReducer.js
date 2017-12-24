@@ -11,7 +11,7 @@ export default function authenticationReducer(state = initialState.authenticatio
         loggedIn: true,
         name: action.auth.name,
         token: '',
-        role: ''
+        role: action.auth.role
       });
 
     case types.LOG_OUT:

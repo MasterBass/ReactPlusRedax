@@ -1,4 +1,4 @@
-import { auth } from './database';
+import { auth, database } from './database';
 
 class AccountApi {
 
@@ -8,6 +8,10 @@ class AccountApi {
 
   static logOut() {
     return auth.signOut();
+  }
+
+  static getRole(uid) {
+    return database.ref('/users/' + uid).once('value');
   }
 
   static register(user) {

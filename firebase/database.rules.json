@@ -1,6 +1,18 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    "users": {
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": false
+      }
+    },
+    "courses": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "authors": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
   }
 }
