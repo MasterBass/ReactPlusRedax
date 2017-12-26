@@ -8,11 +8,11 @@
     },
     "courses": {
       ".read": "auth != null",
-      ".write": "auth != null"
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
     },
     "authors": {
       ".read": "auth != null",
-      ".write": "auth != null"
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
     }
   }
 }
