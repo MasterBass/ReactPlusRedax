@@ -1,9 +1,7 @@
-import { database } from './database';
+import mockAPI from './mockAuthorApi';
+import realAPI from './fireBaseAuthorApi';
 
-class AuthorApi {
-  static getAllAuthors() {
-    return database.ref('/authors/').once('value');
-  }
-}
+const shouldUseMock = process.env.NODE_ENV === 'test';
+const exportedAPI = shouldUseMock ? mockAPI : realAPI;
 
-export default AuthorApi;
+export default exportedAPI;

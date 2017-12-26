@@ -1,24 +1,7 @@
-import { auth, database } from './database';
+import mockAPI from './mockAccountApi';
+import realAPI from './fireBaseAccountApi';
 
-class AccountApi {
+const shouldUseMock = process.env.NODE_ENV === 'test';
+const exportedAPI = shouldUseMock ? mockAPI : realAPI;
 
-  static login(account) {
-    return auth.signInWithEmailAndPassword(account.email, account.password);
-  }
-
-  static logOut() {
-    return auth.signOut();
-  }
-
-  static getRole(uid) {
-    return database.ref('/users/' + uid).once('value');
-  }
-
-  static register(user) {
-    user = Object.assign({}, user); // to avoid manipulating object passed in.
-    return auth.createUserWithEmailAndPassword(user.email, user.password);
-  }
-
-}
-
-export default AccountApi;
+export default exportedAPI;
