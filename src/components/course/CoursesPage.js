@@ -13,6 +13,12 @@ class CoursesPage extends React.Component {
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 
+
+  componentWillMount() {
+    this.props.actions.loadCourses();
+
+  }
+
   deleteCourse(event) {
     event.preventDefault();
     this.props.modalActions.showModal({
