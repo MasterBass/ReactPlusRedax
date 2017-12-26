@@ -9,8 +9,8 @@ export default function authenticationReducer(state = initialState.authenticatio
     case types.AUTHENTICATE_SUCCESS:
       return Object.assign({}, state, {
         loggedIn: true,
-        token: action.auth.token,
         name: action.auth.name,
+        token: '',
         role: action.auth.role
       });
 

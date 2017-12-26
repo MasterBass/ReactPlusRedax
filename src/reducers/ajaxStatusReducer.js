@@ -8,7 +8,7 @@ function actionTypeEndsInSuccess(type) {
 export default function ajaxStatusReducer(state = initialState.ajaxCallsInProgress, action) {
   if (action.type == types.BEGIN_AJAX_CALL) {
     return state + 1;
-  } else if (action.type == types.AJAX_CALL_ERROR || action.type == types.AUTHENTICATE_ERROR ||
+  } else if (action.type == types.AJAX_CALL_ERROR || action.type == types.LOG_OUT || action.type == types.AUTHENTICATE_ERROR ||
     actionTypeEndsInSuccess(action.type)) {
     return state - 1;
   }

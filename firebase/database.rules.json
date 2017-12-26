@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "users": {
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": false
+      }
+    },
+    "courses": {
+      ".read": "auth != null",
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+    "authors": {
+      ".read": "auth != null",
+      ".write": "root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    }
+  }
+}

@@ -3,48 +3,49 @@ import delay from './delay';
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const courses = [
+const courses =
   {
-    id: "react-flux-building-applications",
-    title: "Building Applications in React and Flux",
-    watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
-    authorId: "cory-house",
-    length: "5:08",
-    category: "JavaScript"
-  },
-  {
-    id: "clean-code",
-    title: "Clean Code: Writing Code for Humans",
-    watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
-    authorId: "cory-house",
-    length: "3:10",
-    category: "Software Practices"
-  },
-  {
-    id: "architecture",
-    title: "Architecting Applications for the Real World",
-    watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
-    authorId: "cory-house",
-    length: "2:52",
-    category: "Software Architecture"
-  },
-  {
-    id: "career-reboot-for-developer-mind",
-    title: "Becoming an Outlier: Reprogramming the Developer Mind",
-    watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
-    authorId: "cory-house",
-    length: "2:30",
-    category: "Career"
-  },
-  {
-    id: "web-components-shadow-dom",
-    title: "Web Component Fundamentals",
-    watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
-    authorId: "cory-house",
-    length: "5:10",
-    category: "HTML5"
-  }
-];
+    "react-flux-building-applications": {
+      id: "react-flux-building-applications",
+      title: "Building Applications in React and Flux",
+      watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
+      authorId: "cory-house",
+      length: "5:08",
+      category: "JavaScript"
+    },
+    "clean-code": {
+      id: "clean-code",
+      title: "Clean Code: Writing Code for Humans",
+      watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
+      authorId: "cory-house",
+      length: "3:10",
+      category: "Software Practices"
+    },
+    "architecture": {
+      id: "architecture",
+      title: "Architecting Applications for the Real World",
+      watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+      authorId: "cory-house",
+      length: "2:52",
+      category: "Software Architecture"
+    },
+    "career-reboot-for-developer-mind": {
+      id: "career-reboot-for-developer-mind",
+      title: "Becoming an Outlier: Reprogramming the Developer Mind",
+      watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+      authorId: "cory-house",
+      length: "2:30",
+      category: "Career"
+    },
+    "web-components-shadow-dom": {
+      id: "web-components-shadow-dom",
+      title: "Web Component Fundamentals",
+      watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
+      authorId: "cory-house",
+      length: "5:10",
+      category: "HTML5"
+    }
+  };
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -59,7 +60,7 @@ class CourseApi {
   static getAllCourses() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], courses));
+        resolve(Object.assign([], { val: () => courses }));
       }, delay);
     });
   }
@@ -75,15 +76,16 @@ class CourseApi {
         }
 
         if (course.id) {
-          const existingCourseIndex = courses.findIndex(a => a.id == course.id);
-          courses.splice(existingCourseIndex, 1, course);
+          //const existingCourseIndex = courses.findIndex(a => a.id == course.id);
+          //courses.splice(existingCourseIndex, 1, course);
+          courses[course.id] = course;
         } else {
           //Just simulating creation here.
           //The server would generate ids and watchHref's for new courses in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
           course.id = generateId(course);
           course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
-          courses.push(course);
+          courses[course.id] = course;
         }
 
         resolve(course);
@@ -94,8 +96,9 @@ class CourseApi {
   static deleteCourse(courseId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfCourseToDelete = courses.findIndex(c => c.id == courseId);
-        courses.splice(indexOfCourseToDelete, 1);
+        //const indexOfCourseToDelete = courses.findIndex(c => c.id == courseId);
+        //courses.splice(indexOfCourseToDelete, 1);
+        delete courses[courseId];
         resolve();
       }, delay);
     });

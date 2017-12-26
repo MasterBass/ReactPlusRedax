@@ -50,6 +50,5 @@ describe('Async Actions', () => {
       expect(actions[1].type).toEqual(types.LOAD_COURSES_SUCCESS);
       done();
     });
-
   });
 });

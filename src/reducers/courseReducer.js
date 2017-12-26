@@ -4,7 +4,16 @@ import initialState from './initialState';
 export default function courseReducer(state = initialState.courses, action) {
   switch (action.type) {
     case types.LOAD_COURSES_SUCCESS:
-      return action.courses;
+      return Object.keys(action.courses).map((el) => {
+        return {
+          id: action.courses[el].id,
+          title: action.courses[el].title,
+          watchHref: action.courses[el].watchHref,
+          authorId: action.courses[el].authorId,
+          length: action.courses[el].length,
+          category: action.courses[el].category
+        };
+      });
 
     case types.CREATE_COURSE_SUCCESS:
       return [

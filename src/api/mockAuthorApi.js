@@ -30,7 +30,7 @@ class AuthorApi {
   static getAllAuthors() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], authors));
+        resolve(Object.assign([], {val: () => authors}));
       }, delay);
     });
   }
