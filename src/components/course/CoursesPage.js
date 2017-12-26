@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
+import * as authorActions from '../../actions/authorActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
 import * as modalActions from '../../actions/modalActions';
@@ -16,7 +17,7 @@ class CoursesPage extends React.Component {
 
   componentWillMount() {
     this.props.actions.loadCourses();
-
+    this.props.authorActions.loadAuthors();
   }
 
   deleteCourse(event) {
@@ -54,6 +55,7 @@ class CoursesPage extends React.Component {
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
+  authorActions: PropTypes.object.isRequired,
   modalActions: PropTypes.object.isRequired
 };
 
@@ -67,6 +69,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(courseActions, dispatch),
+    authorActions: bindActionCreators(authorActions, dispatch),
     modalActions: bindActionCreators(modalActions, dispatch)
   };
 }
