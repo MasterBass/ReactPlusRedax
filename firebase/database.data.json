@@ -57,15 +57,5 @@
       "title" : "Web Component Fundamentals",
       "watchHref" : "http://www.pluralsight.com/courses/web-components-shadow-dom"
     }
-  },
-  "users" : {
-    "Jnbyv4ExAeNO0P1FYjXQQzqF4tw2" : {
-      "email" : "user@msn.com",
-      "role" : "user"
-    },
-    "ccEJQLeqy1cScieCUHfWZGQsvHz2" : {
-      "email" : "admin@msn.com",
-      "role" : "admin"
-    }
   }
 }
