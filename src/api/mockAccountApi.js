@@ -5,33 +5,60 @@ import delay from './delay';
 // All calls return promises.
 const users = [
   {
-    id: 'admin',
-    username: 'admin',
-    password: '123456',
+    uid: 'admin',
+    displayName: 'Administrator',
+    email: 'admin@msn.com',
+    password: '123456'
+  },
+  {
+    uid: 'user',
+    displayName: 'User',
+    email: 'user@msn.com',
+    password: '123456'
+  }];
+
+const roles = [
+  {
+    uid: 'admin',
     role: 'admin'
   },
   {
-    id: 'user',
-    username: 'user',
-    password: '123456',
+    uid: 'user',
     role: 'user'
   }];
 
 //This would be performed on the server in a real app. Just stubbing in.
 const generateId = (user) => {
-  return user.username.toLowerCase();
+  return user.displayName.toLowerCase();
 };
 
 class AccountApi {
 
   static login(account) {
-    const user = users.find(u => u.username == account.username && u.password == account.password);
+    const user = users.find(u => u.email == account.email && u.password == account.password);
     if(user) {
       users.push(user);
     }
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(user);
+      }, delay);
+    });
+  }
+
+  static logOut() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, delay);
+    });
+  }
+
+  static getRole(uid) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const userRole = roles.find(r => r.uid == uid);
+        resolve({ val: () => userRole });
       }, delay);
     });
   }
@@ -43,7 +70,7 @@ class AccountApi {
         // Simulate server-side validation
         const minUserNameLength = 3;
         const minPasswordLength = 1;
-        if (user.username.length < minUserNameLength) {
+        if (user.displayName.length < minUserNameLength) {
           reject(`User Name must be at least ${minUserNameLength} characters.`);
         }
 
@@ -51,14 +78,14 @@ class AccountApi {
           reject(`Password must be at least ${minPasswordLength} characters.`);
         }
 
-        if (user.id) {
+        if (user.uid) {
           const existingUserIndex = users.findIndex(a => a.id == user.id);
           users.splice(existingUserIndex, 1, user);
         } else {
           //Just simulating creation here.
           //The server would generate ids for new authors in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
-          user.id = generateId(user);
+          user.uid = generateId(user);
           users.push(user);
         }
 
