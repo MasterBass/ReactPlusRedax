@@ -21,7 +21,7 @@
       "authorId" : "cory-house",
       "category" : "Software Architecture",
       "id" : "architecture",
-      "length" : "2:52",
+      "length" : "02:52",
       "title" : "Architecting Applications for the Real World",
       "watchHref" : "http://www.pluralsight.com/courses/architecting-applications-dotnet"
     },
@@ -29,7 +29,7 @@
       "authorId" : "cory-house",
       "category" : "Career",
       "id" : "career-reboot-for-developer-mind",
-      "length" : "2:30",
+      "length" : "02:30",
       "title" : "Becoming an Outlier: Reprogramming the Developer Mind",
       "watchHref" : "http://www.pluralsight.com/courses/career-reboot-for-developer-mind"
     },
@@ -37,7 +37,7 @@
       "authorId" : "cory-house",
       "category" : "Software Practices",
       "id" : "rclean-code",
-      "length" : "3:10",
+      "length" : "03:10",
       "title" : "Clean Code: Writing Code for Humans",
       "watchHref" : "http://www.pluralsight.com/courses/writing-clean-code-humans"
     },
@@ -45,7 +45,7 @@
       "authorId" : "cory-house",
       "category" : "JavaScript",
       "id" : "react-flux-building-applications",
-      "length" : "5:08",
+      "length" : "05:08",
       "title" : "Building Applications in React and Flux",
       "watchHref" : "http://www.pluralsight.com/courses/react-flux-building-applications"
     },
@@ -53,7 +53,7 @@
       "authorId" : "cory-house",
       "category" : "HTML5",
       "id" : "web-components-shadow-dom",
-      "length" : "5:10",
+      "length" : "05:10",
       "title" : "Web Component Fundamentals",
       "watchHref" : "http://www.pluralsight.com/courses/web-components-shadow-dom"
     }
